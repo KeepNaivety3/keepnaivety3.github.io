@@ -15,7 +15,7 @@ tags: [qbittorrent, CentOS]
   - libtorrent > 1.0.6
   - Qt > 5.9
 
-# 安装前准备
+## 安装前准备
 
 安装必要的工具
 
@@ -32,7 +32,7 @@ yum install -y screen
 screen -S qBittorrent
 ```
 
-# 编译安装 Boost 库
+## 编译安装 Boost 库
 
 截至写文章时，最新的 Boost 库版本是 1.84.0
 
@@ -51,7 +51,7 @@ cd boost_1_84_0
 ./b2 install --prefix=${DIR_BOOST} --with=all -j$(( $(nproc) - 1 ))
 ```
 
-# 编译安装 Libtorrent
+## 编译安装 Libtorrent
 
 `Libtorrent` 是 `Arvid Norberg` 编写的一个库，`qBittorrent` 依赖于该库。在编译 `qBittorrent` 之前，有必要编译并安装 `libtorrent`。
 
@@ -66,7 +66,7 @@ make install
 ln -s /usr/lib/pkgconfig/libtorrent-rasterbar.pc /usr/lib64/pkgconfig/libtorrent-rasterbar.pc
 ```
 
-# 编译安装 qBittorrent-nox
+## 编译安装 qBittorrent-nox
 
 qBittorrent 的源码可以直接从 [Github release](https://github.com/qbittorrent/qBittorrent/releases/tag/release-4.3.9) 下载 `.tar` 的压缩档，也可以选择克隆这仓库：``git clone --depth 1 -b v4_3_x https://github.com/qbittorrent/qBittorrent``
 
@@ -84,7 +84,7 @@ Username: admin
 Password: adminadmin
 ```
 
-# 将 qBittorrent-nox 添加为服务
+## 将 qBittorrent-nox 添加为服务
 
 要使用 `systemctl` 控制 `qBittorrent`，需要编写一个 `.service` 文件，添加一个 `/etc/systemd/system/qbittorrent.service` 文件：
 
@@ -101,14 +101,14 @@ Restart=on-abort
 WantedBy=multi-user.target
 ```
 
-# 为 qBittorrent WebUI 端口设置 Apache httpd 的反向代理
+## 为 qBittorrent WebUI 端口设置 Apache httpd 的反向代理
 
 ```
 ProxyPass "/qbt/" "http://127.0.0.1:8080/"
 ProxyPassReverse "/qbt/" "http://127.0.0.1:8080/"
 ```
 
-# 疑难解答
+## 疑难解答
 
 如果出现类似的问题：
 
@@ -122,7 +122,7 @@ qbittorrent-nox: error while loading shared libraries: libtorrent-rasterbar.so 1
 ln -s /usr/lib/libtorrent-rasterbar.so.10 /usr/lib64/libtorrent-rasterbar.so.10
 ```
 
-对于丢失的 ``libboost_system.so.1.84.0``：
+对于缺少 ``libboost_system.so.1.84.0``：
 
 ```bash
 ln -s /opt/boost/lib/libboost_system.so.1.84.0 /usr/lib64/libboost_system.so.1.84.0
