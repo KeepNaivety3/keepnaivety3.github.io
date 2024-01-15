@@ -68,7 +68,7 @@ ln -s /usr/lib/pkgconfig/libtorrent-rasterbar.pc /usr/lib64/pkgconfig/libtorrent
 
 # 编译安装 qBittorrent-nox
 
-qBittorrent 的源码可以直接从 Github release 下载 `.tar` 的压缩档，也可以选择克隆这仓库：``git clone --depth 1 -b v4_3_x https://github.com/qbittorrent/qBittorrent``
+qBittorrent 的源码可以直接从 [Github release](https://github.com/qbittorrent/qBittorrent/releases/tag/release-4.3.9) 下载 `.tar` 的压缩档，也可以选择克隆这仓库：``git clone --depth 1 -b v4_3_x https://github.com/qbittorrent/qBittorrent``
 
 ```bash
 cd qBittorrent
@@ -108,7 +108,7 @@ ProxyPass "/qbt/" "http://127.0.0.1:8080/"
 ProxyPassReverse "/qbt/" "http://127.0.0.1:8080/"
 ```
 
-## 疑难解答
+# 疑难解答
 
 如果出现类似的问题：
 
